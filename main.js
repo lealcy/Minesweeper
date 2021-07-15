@@ -31,22 +31,6 @@ class Playfield {
         this.reset(width, height, bombDensity);
     }
 
-    createField() {
-
-        for (let x = 0; x < this.width; x++) {
-            for (let y = 0; y < this.height; y++) {
-                const btn = document.createElement("button");
-                btn.id = `btn_${x}_${y}`;
-                btn.classList.add("btn");
-                btn.dataset.x = x;
-                btn.dataset.y = y;
-                btn.addEventListener("click", this.btnClick.bind(this), false);
-                btn.addEventListener("contextmenu", this.btnRightClick.bind(this), false);
-                this.el.appendChild(btn);
-            }
-        }
-    }
-
     reset(newWidth = WIDTH, newHeight = HEIGHT, newBombDensity = BOMB_DENSITY) {
         this.width = newWidth;
         this.height = newHeight;
@@ -118,6 +102,7 @@ class Playfield {
             }
         }
     }
+
     btnClick(evt, revealing = false) {
         const btn = evt.target;
         btn.disabled = true;
